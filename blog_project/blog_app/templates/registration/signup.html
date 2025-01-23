@@ -1,0 +1,6 @@
+<!-- blog_app/templates/registration/signup.html -->
+<form method="POST">
+    {% csrf_token %}
+    {{ form.as_p }}  <!-- Renderiza os campos do formulário -->
+    <button type="submit">Cadastrar</button>
+</form>

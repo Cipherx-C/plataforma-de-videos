@@ -1,0 +1,21 @@
+{% load socialaccount %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <form method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Entrar</button>
+    </form>
+
+    <p>Não tem uma conta? <a href="{% url 'signup' %}">Cadastre-se aqui</a></p>
+
+    <!-- Botão para login com GitHub -->
+    <a href="{% provider_login_url 'github' %}">Entrar com GitHub</a>
+</body>
+</html>

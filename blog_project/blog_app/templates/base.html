@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    {% load static %}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+
+    <title>Blog de Tecnologia</title>
+</head>
+<body>
+    <!-- Cabeçalho -->
+    <header>
+        <div class="container">
+            <h1><a href="/">Blog de Tecnologia</a></h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Início</a></li>
+                    <li><a href="{% url 'create_post' %}">Criar Post</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Conteúdo principal -->
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+    {% if user.is_authenticated %}
+    <p>Olá, {{ user.username }}! <a href="{% url 'logout' %}">Sair</a></p>
+{% else %}
+    <a href="{% url 'login' %}">Entrar</a>
+{% endif %}
+
+    <!-- Rodapé -->
+    <footer>
+        <p>&copy; 2025 Blog de Tecnologia</p>
+    </footer>
+</body>
+</html>
